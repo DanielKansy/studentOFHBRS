@@ -56,6 +56,16 @@ public class EingabeDialog {
 
                 UserStory us = new UserStory(id, titel, strafe, mehrwert, aufwand, risiko, prio);
 
+                if (aufwand > 4) {
+
+                    System.out.println("Die ID: " + id + "Titel: " + titel + "Aufwand: " + aufwand);
+
+                }
+
+                else {
+                    System.out.println("Aufwand weniger als 4 -> Keine Anzeige!");
+                }
+
                 try {
 
                     Container.getInstance().addUserstory(us);
