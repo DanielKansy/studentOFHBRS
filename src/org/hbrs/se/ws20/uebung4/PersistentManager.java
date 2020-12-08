@@ -11,11 +11,11 @@ import java.io.IOException;
 
 public class PersistentManager {
 
-    public static void store(){
+    public static void store() {
 
         try {
 
-            ObjectOutputStream stream = new ObjectOutputStream (new FileOutputStream("File.data"));
+            ObjectOutputStream stream = new ObjectOutputStream (new FileOutputStream("Datei.data"));
             stream.writeObject(Container.getInstance().getList());
             stream.close();
 
@@ -34,9 +34,12 @@ public class PersistentManager {
 
         try {
 
-            ObjectInputStream stream2 = new ObjectInputStream (new FileInputStream("File.data"));
+            ObjectInputStream stream2 = new ObjectInputStream (new FileInputStream("Datei.data"));
+
             ArrayList<UserStory> us = (ArrayList<UserStory>) stream2.readObject();
+
             Iterator<UserStory> i = us.iterator();
+
             Container c = Container.getInstance();
 
             while (i.hasNext()) {
@@ -46,7 +49,7 @@ public class PersistentManager {
                 }
 
                 catch (ContainerException e) {
-
+                    System.out.println("Fehler!");
                 }
 
             }
@@ -56,7 +59,9 @@ public class PersistentManager {
         }
 
         catch (Exception e) {
+
             e.printStackTrace();
+
         }
 
     }

@@ -2,6 +2,7 @@ package org.hbrs.se.ws20.uebung4;
 
 import java.util.Scanner;
 
+// "Notwendige Daten zur Eingabe einer User-Story"
 public class EingabeDialog {
 
     Scanner sc = new Scanner(System.in);
@@ -12,23 +13,25 @@ public class EingabeDialog {
 
             StringBuffer sb = new StringBuffer(sc.next());
 
-            if(sb.toString().startsWith("Anzeige aller möglichen Befehle")) {
+            if (sb.toString().startsWith("Anzeige aller möglichen Befehle")) {
 
                 System.out.print("Wählen Sie eine Funktion aus: (Enter, Store, Load, Dump, Exit)");
 
             }
 
-            if(sb.toString().startsWith("Load")) {
+            if (sb.toString().startsWith("Load")) {
 
                 PersistentManager.load();
 
             }
-            if(sb.toString().startsWith("Store")) {
+
+            if (sb.toString().startsWith("Store")) {
 
                 PersistentManager.store();
 
             }
-            if(sb.toString().startsWith("Enter")) {
+
+            if (sb.toString().startsWith("Enter")) {
 
                 Console x = new Console();
 
@@ -50,12 +53,12 @@ public class EingabeDialog {
                 System.out.println("Mehrwert: ");
                 int mehrwert = x.InsertInt();
 
+                // Prioriesierungswert
                 int prio = ((risiko + aufwand) / (strafe + mehrwert));
 
                 System.out.println("ID" + id + "Prio:" + prio);
 
-                UserStory us = new UserStory(id, titel, strafe, mehrwert, aufwand, risiko, prio);
-
+                // Weitere User Story "ab einem bestimmten Aufwand":
                 if (aufwand > 4) {
 
                     System.out.println("Die ID: " + id + "Titel: " + titel + "Aufwand: " + aufwand);
@@ -63,8 +66,12 @@ public class EingabeDialog {
                 }
 
                 else {
+
                     System.out.println("Aufwand weniger als 4 -> Keine Anzeige!");
+
                 }
+
+                /* UserStory us = new UserStory(id, titel, strafe, mehrwert, aufwand, risk, prio);
 
                 try {
 
@@ -75,6 +82,8 @@ public class EingabeDialog {
                     System.out.println("Fehler:" + e.getMessage());
 
                 }
+
+                 */
             }
         }
     }

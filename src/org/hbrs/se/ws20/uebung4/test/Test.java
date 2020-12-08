@@ -11,6 +11,7 @@ public class Test {
 
     EingabeDialog ein = new EingabeDialog();
 
+    // Liste erstellen (?Tabelle?)
     ArrayList<UserStory> list = new ArrayList<>();
 
     Container ct = new Container(list);

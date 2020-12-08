@@ -5,10 +5,10 @@ import java.io.Serializable;
 
 public class Container implements Serializable {
 
+    // Liste zur Abspeicherung der Objekte
     private ArrayList<UserStory> liste = new ArrayList<>();
 
-    private Modus x = Modus.LIST_TYPE_ARRAY;
-
+    // Statische Klasse-Variable, um die Referenz auf das einzige Container-Objekt abzuspeichern
     public static Container c = new Container();
 
     private Container() {
@@ -26,20 +26,24 @@ public class Container implements Serializable {
         }
         return c;
     }
+
     public Container(ArrayList<UserStory> list) {
 
         list = new ArrayList<UserStory>();
 
     }
+
     public ArrayList<UserStory> getList() {
+
         return liste;
+
     }
 
-    public UserStory getlist(int id) {
+    public UserStory getlist(int ID) {
 
         for(UserStory item : liste){
 
-            if(id==item.getId()){
+            if(ID==item.getId()){
                 return item;
             }
 
@@ -47,30 +51,27 @@ public class Container implements Serializable {
         return null;
     }
 
+    // Methode zum Hinzufügen einer Story
     public void addUserstory(UserStory r) throws ContainerException {
 
-        if(DoesExist(r) == true){
+        if(Contains(r) == true){
 
-            throw new ContainerException();
+            throw new ContainerException("ID bereits vorhanden!");
 
         }
         liste.add(r);
     }
-    public boolean DoesExist(UserStory ust) {
+
+    // Methode zum Prüfen ob eine Story bereits vorhanden ist
+    public boolean Contains(UserStory ust) {
 
         for(UserStory us:liste) {
-            if(Util.cmpId.compare(us,ust)==0) {
+
+            if(Util.cmpId.compare(us,ust) == 0) {
                 return true;
             }
+
         }
         return false;
     }
-
-    public Modus getModus() {
-        return x;
-    }
-    public void setModus(Modus m) {
-        this.x = m;
-    }
-
 }

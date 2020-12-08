@@ -83,9 +83,4 @@ public class UserStory implements java.io.Serializable, Comparable {
 		// -1, 1,0
 	}
 
-	public String toString() {
-		return "UserStory [id=" + id + ", titel=" + titel + ", strafe=" + strafe + ", mehrwert=" + mehrwert
-				+ ", aufwand=" + aufwand + ", risiko=" + risk + ", prio=" + prio + "]";
-	}
-
 }
